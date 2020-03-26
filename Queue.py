@@ -11,18 +11,16 @@ class LinkedListTail:
 
     def add_head(self, data):
         new = Data(data)
-        if self.head is None:
-            self.head = new
-            if self.tail is None:
-                self.tail = new
-            return
         new.next = self.head
         self.head = new
+        if self.tail is None:
+            self.tail = new
 
     def remove_head(self):
         gone = self.head
         if self.head.next is None:
             self.head = None
+            self.tail = None
             return
         self.head = self.head.next
         return gone.data
