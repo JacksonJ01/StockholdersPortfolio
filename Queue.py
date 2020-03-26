@@ -21,14 +21,16 @@ class LinkedListTail:
 
     def remove_head(self):
         gone = self.head
+        if self.head.next is None:
+            self.head = None
+            return
         self.head = self.head.next
         return gone.data
 
     def add_tail(self, data):
         new = Data(data)
-        if self.head is None:
+        if self.head is None and self.tail is None:
             self.head = new
-        if self.tail is None:
             self.tail = new
             return
         self.tail.next = new
